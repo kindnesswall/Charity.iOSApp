@@ -7,8 +7,22 @@
 //
 
 import Foundation
+import Combine
 
 class ApiUtility {
+    
+    public static func decode<T: Decodable>(_ data: Data) -> AnyPublisher<T, AppError> {
+      let decoder = JSONDecoder()
+      decoder.dateDecodingStrategy = .secondsSince1970
+
+      return Just(data)
+        .decode(type: T.self, decoder: decoder)
+        .mapError { error in
+          .DataDecoding(description: error.localizedDescription)
+        }
+        .eraseToAnyPublisher()
+    }
+    
     public static func convert<JsonType:Codable>(dic:[String:Any]?,to outputType:JsonType.Type)->JsonType? {
         
         guard let dic = dic else{
@@ -18,7 +32,6 @@ class ApiUtility {
             return nil
         }
         return convert(data: theJSONData, to: outputType)
-        
     }
     
     public static func convert<JsonType:Codable>(data:Data?,to outputType:JsonType.Type)->JsonType? {

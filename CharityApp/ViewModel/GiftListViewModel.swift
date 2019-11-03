@@ -8,9 +8,11 @@
 
 import Foundation
 import SwiftUI
+import Combine
 
 class GiftListViewModel:ObservableObject {
-    
+    private var disposables = Set<AnyCancellable>()
+
     lazy var httpLayer = HTTPLayer()
     lazy var apiService = ApiService(httpLayer)
     
@@ -21,22 +23,21 @@ class GiftListViewModel:ObservableObject {
         let input=GiftsRequestInput()
         let endPoint = Endpoint.GetGifts(input: input)
 
-        apiService.getGifts(endPoint:endPoint) { [weak self] (result) in
-            
-            DispatchQueue.main.async {
-                self?.handleGetGift(result)
-            }
-        }
-        
-    }
-    
-    func handleGetGift(_ result:Result<[Gift]>) {
-        switch result {
-        case .failure(let error):
-            print(error)
-
-        case .success(let gifts):
+        apiService.getGifts(endPoint: endPoint)
+        .receive(on: DispatchQueue.main)
+        .sink(receiveCompletion: { [weak self] value in
+          guard let self = self else { return }
+          switch value {
+          case .failure:
+            self.gifts = []
+          case .finished:
+            break
+          }
+          }, receiveValue: { [weak self] gifts in
+            guard let self = self else { return }
             self.gifts = gifts
-        }
+        })
+        .store(in: &disposables)
+        
     }
 }

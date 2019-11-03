@@ -12,7 +12,7 @@ public enum AppError: Error {
     case InvalidInput
     case ApiUrlProblem
     case NoInternet
-    case DataDecoding
+    case DataDecoding(description:String)
     case ServerError
     case DBFetch
     case NoData

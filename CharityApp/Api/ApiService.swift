@@ -7,12 +7,14 @@
 //
 
 import Foundation
+import Combine
 
 protocol ApiServiceProtocol {
 
 }
 
 class ApiService:ApiServiceProtocol {
+
     let httpLayer: HTTPLayerProtocol
     init(_ httpLayer: HTTPLayerProtocol) {
         self.httpLayer = httpLayer
@@ -30,40 +32,19 @@ class ApiService:ApiServiceProtocol {
         return httpLayer.findIndexOf(task: task)
     }
     
-    func getCharityList(completion: @escaping (Result<[Charity]>) -> Void){
+    func getCharityList() -> AnyPublisher<[Charity], AppError>{
+        let publisher:AnyPublisher<[Charity], AppError> =
+            self.httpLayer.request(at: Endpoint.CharityList)
         
-        self.httpLayer.request(at: Endpoint.CharityList) {(result) in
-            switch result{
-            case .failure(let appError):
-                completion(.failure(appError))
-            case .success(let data):
-                if let charities = ApiUtility.convert(data: data, to: [Charity].self){
-                    completion(.success(charities))
-                }else{
-                    completion(.failure(AppError.DataDecoding))
-                }
-            }
-        }
+        return publisher
     }
     
-    func getGifts(endPoint: Endpoint, completion: @escaping (Result<[Gift]>)-> Void) {
-        self.httpLayer.request(at: endPoint) {[weak self] (result) in
-            self?.handleGiftList(result: result, completion: completion)
-        }
+    func getGifts(endPoint: Endpoint) -> AnyPublisher<[Gift], AppError> {
+        let publisher:AnyPublisher<[Gift], AppError> =
+            self.httpLayer.request(at: endPoint)
+        
+        return publisher
     }
-    
-    func handleGiftList(result: Result<Data>, completion: @escaping (Result<[Gift]>)-> Void) {
-        switch result{
-        case .failure(let appError):
-            completion(.failure(appError))
-        case .success(let data):
-            if let gifts = ApiUtility.convert(data: data, to: [Gift].self){
-                completion(.success(gifts))
-            }else{
-                completion(.failure(AppError.DataDecoding))
-            }
-        }
-    }
-    
+
 }
 

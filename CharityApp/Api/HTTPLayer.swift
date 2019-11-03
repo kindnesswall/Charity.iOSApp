@@ -7,13 +7,17 @@
 //
 
 import Foundation
+import Combine
 
 protocol HTTPLayerProtocol {
     func request(at endpoint: EndpointProtocol, completion: @escaping (Result<Data>) -> Void)
+    func request<T>(at endpoint: EndpointProtocol) -> AnyPublisher<T, AppError> where T: Decodable
+    
     func cancelRequests()
     func cancelAllTasksAndSessions()
     func cancelRequestAt(index:Int)
     func findIndexOf(task:URLSessionTask?)->Int?
+    
 }
 
 class HTTPLayer:HTTPLayerProtocol {
@@ -21,7 +25,7 @@ class HTTPLayer:HTTPLayerProtocol {
     var urlSession:URLSession
     var tasks:[URLSessionDataTask] = []
     var sessions : [URLSession]=[]
-
+    
     init(urlSession:URLSession = .shared) {
         self.urlSession = urlSession
     }
@@ -58,6 +62,35 @@ class HTTPLayer:HTTPLayerProtocol {
         request = setRequestHeader(request: request)
         
         return request
+    }
+    
+    func request<T>(at endpoint: EndpointProtocol) -> AnyPublisher<T, AppError> where T: Decodable {
+        
+        let request:URLRequest!
+        
+        do{
+            request = try createURLRequestFrom(endpoint: endpoint)
+        }catch{
+            return Fail(error: AppError.ApiUrlProblem).eraseToAnyPublisher()
+        }
+        
+        let publisher:AnyPublisher<T, AppError> =
+            urlSession.dataTaskPublisher(for: request)
+                .mapError { error in
+                    if let error = error as NSError? {
+                        switch error.code{
+                        case URLError.notConnectedToInternet.rawValue:
+                            return AppError.NoInternet
+                        default:
+                            return AppError.Unknown
+                        }
+                    }
+            }
+            .flatMap(maxPublishers: .max(1)) { pair in
+                ApiUtility.decode(pair.data)
+            }
+            .eraseToAnyPublisher()
+        return publisher
     }
     
     func request(at endpoint: EndpointProtocol, completion: @escaping (Result<Data>) -> Void) {
@@ -111,7 +144,7 @@ class HTTPLayer:HTTPLayerProtocol {
         }
         tasks = []
     }
-
+    
     func cancelAllTasksAndSessions() {
         for session in sessions {
             session.invalidateAndCancel()
@@ -138,13 +171,13 @@ class HTTPLayer:HTTPLayerProtocol {
         guard let task = task else {
             return nil
         }
-
+        
         for (index,t) in tasks.enumerated() {
             if t == task {
                 return index
             }
         }
-
+        
         return nil
     }
 }
