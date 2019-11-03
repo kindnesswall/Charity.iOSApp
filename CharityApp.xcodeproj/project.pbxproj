@@ -13,6 +13,17 @@
 		05CD3B2F236E3C50000E0209 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 05CD3B2E236E3C50000E0209 /* Assets.xcassets */; };
 		05CD3B32236E3C50000E0209 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 05CD3B31236E3C50000E0209 /* Preview Assets.xcassets */; };
 		05CD3B35236E3C50000E0209 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05CD3B33236E3C50000E0209 /* LaunchScreen.storyboard */; };
+		05CD3B3E236E47B6000E0209 /* Gift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CD3B3D236E47B6000E0209 /* Gift.swift */; };
+		05CD3B41236E4805000E0209 /* GiftListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CD3B40236E4805000E0209 /* GiftListViewModel.swift */; };
+		05CD3B48236E4CAA000E0209 /* HTTPLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CD3B45236E4CA9000E0209 /* HTTPLayer.swift */; };
+		05CD3B49236E4CAA000E0209 /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CD3B46236E4CA9000E0209 /* ApiService.swift */; };
+		05CD3B4A236E4CAA000E0209 /* ApiUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CD3B47236E4CA9000E0209 /* ApiUtility.swift */; };
+		05CD3B51236E4CE0000E0209 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CD3B4D236E4CE0000E0209 /* Endpoint.swift */; };
+		05CD3B52236E4CE0000E0209 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CD3B4E236E4CE0000E0209 /* Result.swift */; };
+		05CD3B53236E4CE0000E0209 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CD3B4F236E4CE0000E0209 /* HTTPMethod.swift */; };
+		05CD3B54236E4CE0000E0209 /* GiftListType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CD3B50236E4CE0000E0209 /* GiftListType.swift */; };
+		05CD3B57236E4DCB000E0209 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CD3B56236E4DCB000E0209 /* AppError.swift */; };
+		05CD3B5A236E4EA4000E0209 /* GiftsRequestInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CD3B59236E4EA4000E0209 /* GiftsRequestInput.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +35,17 @@
 		05CD3B31236E3C50000E0209 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		05CD3B34236E3C50000E0209 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		05CD3B36236E3C50000E0209 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		05CD3B3D236E47B6000E0209 /* Gift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gift.swift; sourceTree = "<group>"; };
+		05CD3B40236E4805000E0209 /* GiftListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftListViewModel.swift; sourceTree = "<group>"; };
+		05CD3B45236E4CA9000E0209 /* HTTPLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HTTPLayer.swift; path = Api/HTTPLayer.swift; sourceTree = "<group>"; };
+		05CD3B46236E4CA9000E0209 /* ApiService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ApiService.swift; path = Api/ApiService.swift; sourceTree = "<group>"; };
+		05CD3B47236E4CA9000E0209 /* ApiUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ApiUtility.swift; path = Api/ApiUtility.swift; sourceTree = "<group>"; };
+		05CD3B4D236E4CE0000E0209 /* Endpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Endpoint.swift; path = Api/enums/Endpoint.swift; sourceTree = "<group>"; };
+		05CD3B4E236E4CE0000E0209 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Result.swift; path = Api/enums/Result.swift; sourceTree = "<group>"; };
+		05CD3B4F236E4CE0000E0209 /* HTTPMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HTTPMethod.swift; path = Api/enums/HTTPMethod.swift; sourceTree = "<group>"; };
+		05CD3B50236E4CE0000E0209 /* GiftListType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GiftListType.swift; path = Api/enums/GiftListType.swift; sourceTree = "<group>"; };
+		05CD3B56236E4DCB000E0209 /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
+		05CD3B59236E4EA4000E0209 /* GiftsRequestInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftsRequestInput.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +78,10 @@
 		05CD3B27236E3C4C000E0209 /* CharityApp */ = {
 			isa = PBXGroup;
 			children = (
+				05CD3B55236E4DBC000E0209 /* App */,
+				05CD3B4B236E4CB2000E0209 /* Api */,
+				05CD3B3F236E47D1000E0209 /* ViewModel */,
+				05CD3B3C236E47A7000E0209 /* Model */,
 				05CD3B28236E3C4C000E0209 /* AppDelegate.swift */,
 				05CD3B2A236E3C4C000E0209 /* SceneDelegate.swift */,
 				05CD3B2C236E3C4C000E0209 /* ContentView.swift */,
@@ -73,6 +99,61 @@
 				05CD3B31236E3C50000E0209 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		05CD3B3C236E47A7000E0209 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				05CD3B58236E4E99000E0209 /* Api */,
+				05CD3B3D236E47B6000E0209 /* Gift.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		05CD3B3F236E47D1000E0209 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				05CD3B40236E4805000E0209 /* GiftListViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		05CD3B4B236E4CB2000E0209 /* Api */ = {
+			isa = PBXGroup;
+			children = (
+				05CD3B4C236E4CCF000E0209 /* enums */,
+				05CD3B46236E4CA9000E0209 /* ApiService.swift */,
+				05CD3B47236E4CA9000E0209 /* ApiUtility.swift */,
+				05CD3B45236E4CA9000E0209 /* HTTPLayer.swift */,
+			);
+			name = Api;
+			sourceTree = "<group>";
+		};
+		05CD3B4C236E4CCF000E0209 /* enums */ = {
+			isa = PBXGroup;
+			children = (
+				05CD3B4D236E4CE0000E0209 /* Endpoint.swift */,
+				05CD3B50236E4CE0000E0209 /* GiftListType.swift */,
+				05CD3B4F236E4CE0000E0209 /* HTTPMethod.swift */,
+				05CD3B4E236E4CE0000E0209 /* Result.swift */,
+			);
+			name = enums;
+			sourceTree = "<group>";
+		};
+		05CD3B55236E4DBC000E0209 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				05CD3B56236E4DCB000E0209 /* AppError.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		05CD3B58236E4E99000E0209 /* Api */ = {
+			isa = PBXGroup;
+			children = (
+				05CD3B59236E4EA4000E0209 /* GiftsRequestInput.swift */,
+			);
+			path = Api;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -147,8 +228,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				05CD3B29236E3C4C000E0209 /* AppDelegate.swift in Sources */,
+				05CD3B54236E4CE0000E0209 /* GiftListType.swift in Sources */,
+				05CD3B5A236E4EA4000E0209 /* GiftsRequestInput.swift in Sources */,
+				05CD3B51236E4CE0000E0209 /* Endpoint.swift in Sources */,
+				05CD3B4A236E4CAA000E0209 /* ApiUtility.swift in Sources */,
+				05CD3B57236E4DCB000E0209 /* AppError.swift in Sources */,
+				05CD3B53236E4CE0000E0209 /* HTTPMethod.swift in Sources */,
 				05CD3B2B236E3C4C000E0209 /* SceneDelegate.swift in Sources */,
 				05CD3B2D236E3C4C000E0209 /* ContentView.swift in Sources */,
+				05CD3B41236E4805000E0209 /* GiftListViewModel.swift in Sources */,
+				05CD3B52236E4CE0000E0209 /* Result.swift in Sources */,
+				05CD3B3E236E47B6000E0209 /* Gift.swift in Sources */,
+				05CD3B49236E4CAA000E0209 /* ApiService.swift in Sources */,
+				05CD3B48236E4CAA000E0209 /* HTTPLayer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,6 +385,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kindnesswand.CharityApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -313,6 +406,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kindnesswand.CharityApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

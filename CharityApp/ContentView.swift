@@ -9,8 +9,24 @@
 import SwiftUI
 
 struct ContentView: View {
+    @ObservedObject var giftListVM = GiftListViewModel()
     var body: some View {
-        Text("Hello World")
+        NavigationView{
+
+            ScrollView {
+                ForEach(self.giftListVM.gifts) { gift in
+//                    if let title = gift.title{
+                        Text(gift.title ?? "")
+//                    }
+                }
+            }
+            .navigationBarTitle("Gifts")
+            .navigationBarItems(trailing: Button(action: {
+                self.giftListVM.getGifts()
+            }, label: {
+                Text("Reload")
+            }))
+        }
     }
 }
 
