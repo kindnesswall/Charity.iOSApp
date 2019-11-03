@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		056B9F2B236EC57F00F8F02D /* Charity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056B9F2A236EC57F00F8F02D /* Charity.swift */; };
 		05CD3B29236E3C4C000E0209 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CD3B28236E3C4C000E0209 /* AppDelegate.swift */; };
 		05CD3B2B236E3C4C000E0209 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CD3B2A236E3C4C000E0209 /* SceneDelegate.swift */; };
 		05CD3B2D236E3C4C000E0209 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CD3B2C236E3C4C000E0209 /* ContentView.swift */; };
@@ -27,6 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		056B9F2A236EC57F00F8F02D /* Charity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Charity.swift; sourceTree = "<group>"; };
 		05CD3B25236E3C4C000E0209 /* CharityApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CharityApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		05CD3B28236E3C4C000E0209 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		05CD3B2A236E3C4C000E0209 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 			children = (
 				05CD3B58236E4E99000E0209 /* Api */,
 				05CD3B3D236E47B6000E0209 /* Gift.swift */,
+				056B9F2A236EC57F00F8F02D /* Charity.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -234,6 +237,7 @@
 				05CD3B4A236E4CAA000E0209 /* ApiUtility.swift in Sources */,
 				05CD3B57236E4DCB000E0209 /* AppError.swift in Sources */,
 				05CD3B53236E4CE0000E0209 /* HTTPMethod.swift in Sources */,
+				056B9F2B236EC57F00F8F02D /* Charity.swift in Sources */,
 				05CD3B2B236E3C4C000E0209 /* SceneDelegate.swift in Sources */,
 				05CD3B2D236E3C4C000E0209 /* ContentView.swift in Sources */,
 				05CD3B41236E4805000E0209 /* GiftListViewModel.swift in Sources */,

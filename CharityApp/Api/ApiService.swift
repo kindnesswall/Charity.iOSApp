@@ -30,6 +30,22 @@ class ApiService:ApiServiceProtocol {
         return httpLayer.findIndexOf(task: task)
     }
     
+    func getCharityList(completion: @escaping (Result<[Charity]>) -> Void){
+        
+        self.httpLayer.request(at: Endpoint.CharityList) {(result) in
+            switch result{
+            case .failure(let appError):
+                completion(.failure(appError))
+            case .success(let data):
+                if let charities = ApiUtility.convert(data: data, to: [Charity].self){
+                    completion(.success(charities))
+                }else{
+                    completion(.failure(AppError.DataDecoding))
+                }
+            }
+        }
+    }
+    
     func getGifts(endPoint: Endpoint, completion: @escaping (Result<[Gift]>)-> Void) {
         self.httpLayer.request(at: endPoint) {[weak self] (result) in
             self?.handleGiftList(result: result, completion: completion)

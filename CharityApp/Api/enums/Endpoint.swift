@@ -17,7 +17,8 @@ protocol EndpointProtocol {
 enum Endpoint:EndpointProtocol {
     
     case GetGifts(input: GiftsRequestInput)
-    
+    case CharityList
+
     private var basePathUrl:String{ return "/api/v1/"}
     private var usersBaseURL:String { return basePathUrl + "users/" }
     private var chatBaseURL:String { return basePathUrl + "chat/" }
@@ -40,7 +41,8 @@ enum Endpoint:EndpointProtocol {
     
     var httpBody: Data? {
         switch self {
-            
+        case .CharityList:
+            return nil
         case .GetGifts(let input):
             return ApiUtility.convert(input: input)
         }
@@ -48,6 +50,8 @@ enum Endpoint:EndpointProtocol {
     
     var httpMethod: String {
         switch self {
+        case .CharityList:
+            return HttpMethod.GET.rawValue
         case .GetGifts(_):
             return HttpMethod.POST.rawValue
         }
@@ -56,6 +60,8 @@ enum Endpoint:EndpointProtocol {
     
     private var path:String {
         switch self {
+        case .CharityList:
+            return charityBaseURL + "list"
         case .GetGifts:
             return giftsBaseURL
         }
