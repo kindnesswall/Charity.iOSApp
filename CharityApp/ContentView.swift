@@ -15,9 +15,7 @@ struct ContentView: View {
 
             ScrollView {
                 ForEach(self.giftListVM.gifts) { gift in
-//                    if let title = gift.title{
                         Text(gift.title ?? "")
-//                    }
                 }
             }
             .navigationBarTitle("Gifts")

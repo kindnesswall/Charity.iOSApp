@@ -10,8 +10,6 @@ import Foundation
 
 protocol HTTPLayerProtocol {
     func request(at endpoint: EndpointProtocol, completion: @escaping (Result<Data>) -> Void)
-    func upload(at endpoint: EndpointProtocol, urlSessionDelegate:URLSessionDelegate, completion: @escaping (Result<Data>) -> Void)
-    
     func cancelRequests()
     func cancelAllTasksAndSessions()
     func cancelRequestAt(index:Int)
@@ -104,34 +102,6 @@ class HTTPLayer:HTTPLayerProtocol {
         }else{
             completion(.failure(AppError.Unknown))
         }
-    }
-    
-    func upload(at endpoint: EndpointProtocol, urlSessionDelegate:URLSessionDelegate, completion: @escaping (Result<Data>) -> Void){
-        
-        let request:URLRequest!
-        
-        do{
-            request = try createUploadRequestFrom(endpoint: endpoint)
-        }catch{
-            completion(.failure(AppError.ApiUrlProblem))
-            return
-        }
-        
-        guard let dataToUpload = endpoint.httpBody else {
-            return
-        }
-        
-        let config=URLSessionConfiguration.default
-        let session=URLSession(configuration: config, delegate: urlSessionDelegate, delegateQueue: OperationQueue.main)
-        
-        let task=session.uploadTask(with: request, from: dataToUpload) { [weak self] (data, response, error) in
-            
-            self?.handleResponse(data, response, error, completion: completion)
-        }
-        
-        sessions.append(session)
-        tasks.append(task)
-        task.resume()
     }
     
     func cancelRequests() {
