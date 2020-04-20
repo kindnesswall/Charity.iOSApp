@@ -12,11 +12,8 @@ struct ContentView: View {
     @ObservedObject var giftListVM = GiftListViewModel()
     var body: some View {
         NavigationView{
-
-            ScrollView {
-                ForEach(self.giftListVM.gifts) { gift in
-                        Text(gift.title ?? "")
-                }
+            List(giftListVM.gifts, id: \.id) { gift in
+                Text(gift.title ?? "")
             }
             .navigationBarTitle("Gifts")
             .navigationBarItems(trailing: Button(action: {

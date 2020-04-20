@@ -18,6 +18,10 @@ class GiftListViewModel:ObservableObject {
     
     @Published var gifts:[Gift] = []
     
+    init() {
+        getGifts()
+    }
+    
     func getGifts(){
         
         let input=GiftsRequestInput()
